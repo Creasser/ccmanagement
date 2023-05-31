@@ -40,13 +40,13 @@ function CompanyLogin() {
                 placeholder="Enter Password"
                 onChange={handleChange}
                 ></input>
-                <input 
+                {/* <input 
                 type="text"
                 name="password_confirmation"
                 value={userLogin.password_confirmation}
                 placeholder="Confirm Password"
                 onChange={handleChange}
-                ></input>
+                ></input> */}
                 <input 
                 type="submit"
                 name="submit"
