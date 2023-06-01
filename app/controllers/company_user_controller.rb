@@ -3,6 +3,7 @@ class CompanyUserController < ApplicationController
     def create
         company = Company.create(company_params)
         if company.valid?
+            session[:company_id] = company.id
             render json: company, status: :created
         else
             render json: {errors: 'Invalid Information'}, status: :unprocessable_entity
