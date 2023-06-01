@@ -1,49 +1,85 @@
 import React, { useState } from "react";
 
 function CompanySignup() {
-    const [userLogin, setUserLogin] = useState({
+    const [userSignup, setUserSignup] = useState({
         username: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        company_name: '',
+        description: ''
     })
 
     function handleChange(e){
         const name = e.target.name
         let value = e.target.value
-        setUserLogin({
-            ...userLogin,
+        setUserSignup({
+            ...userSignup,
             [name]: value
         })
     }
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log(userLogin)
+        //console.log(userSignup)
+        fetch("/companysignup", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: userSignup.username,
+                password: userSignup.password,
+                password_confirmation: userSignup.password_confirmation,
+                company_name: userSignup.company_name,
+                description: userSignup.description
+            })
+        }).then((r) => {
+            if (r.ok){
+                r.json().then((user) => console.log(user))
+            }
+            else {
+                console.log('This is not working')
+            }
+        })
     }
 
     return (
         <div>
-            <div>Hello</div>
+            <div>Company Signup</div>
             <form onSubmit={handleSubmit}>
                 <input 
                 type="text"
                 name="username"
-                value={userLogin.username}
+                value={userSignup.username}
                 placeholder="Enter Username"
                 onChange={handleChange}
                 ></input>
                 <input 
                 type="text"
                 name="password"
-                value={userLogin.password}
+                value={userSignup.password}
                 placeholder="Enter Password"
                 onChange={handleChange}
                 ></input>
                 <input 
                 type="text"
                 name="password_confirmation"
-                value={userLogin.password_confirmation}
+                value={userSignup.password_confirmation}
                 placeholder="Confirm Password"
+                onChange={handleChange}
+                ></input>
+                <input
+                type="text"
+                name="company_name"
+                value={userSignup.company_name}
+                placeholder="Enter Company Name"
+                onChange={handleChange}
+                ></input>
+                <input
+                type="text"
+                name="description"
+                value={userSignup.description}
+                placeholder="Enter Company Description"
                 onChange={handleChange}
                 ></input>
                 <input 
