@@ -12,7 +12,7 @@ class CompanyUserController < ApplicationController
     private
 
     def company_params
-        params.permit(:username, :password, :password_confirmation, :company_name, :description, :company_user)
+        params.permit(:username, :password, :password_confirmation, :company_name, :description)
     end
 
 end
