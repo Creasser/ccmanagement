@@ -5,7 +5,7 @@ function CompanyLogin() {
     const [userLogin, setUserLogin] = useState({
         username: '',
         password: '',
-        password_confirmation: ''
+        //password_confirmation: ''
     })
 
     function handleChange(e){
@@ -19,7 +19,24 @@ function CompanyLogin() {
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log(userLogin)
+        //console.log(userLogin)
+        fetch('/companylogin', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: userLogin.username,
+                password: userLogin.password
+            })
+        }).then((r) => {
+            if (r.ok){
+                r.json().then((user) => console.log(user))
+            }
+            else {
+                r.json().then((res) => console.log(res))
+            }
+        })
     }
 
     return(

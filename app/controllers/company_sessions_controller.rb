@@ -1,0 +1,13 @@
+class CompanySessionsController < ApplicationController
+
+    def create
+        company = Company.find_by(username: params[:username])
+        if company&.authenticate(params[:password])
+            session[:company_id] = company.id
+            render json: company, status: :created
+        else
+            render json: {message: 'Not working'}, status: :unprocessable_entity
+        end
+    end
+
+end
