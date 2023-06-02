@@ -10,4 +10,9 @@ class CompanySessionsController < ApplicationController
         end
     end
 
+    def destroy
+        session.delete :company_id
+        head :no_content
+    end
+
 end

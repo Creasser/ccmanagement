@@ -3,6 +3,7 @@ import CompanyLogin from './components/CompanyLogin';
 import CompanySignup from './components/CompanySignup';
 import Home from './components/Home';
 import { Route } from 'react-router-dom';
+import UserHomePage from './components/UserHomePage';
 //import { UserProvider } from './components/UserContext';
 //import { UserContext } from './components/UserContext';
 //import { useContext, useEffect } from 'react';
@@ -26,7 +27,8 @@ useEffect(() => {
     <div className="App">
       {/* <UserProvider> */}
         <Route exact path='/'>
-          <Home user={user}/>
+          {user ? <UserHomePage user={user} setUser={setUser}/> : <Home />}
+      
         </Route>
         <Route exact path='/companysignup'>
           <CompanySignup />

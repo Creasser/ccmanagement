@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function CompanyLogin() {
     const [userLogin, setUserLogin] = useState({
         username: '',
         password: '',
-        //password_confirmation: ''
     })
+
+    const history = useHistory()
 
     function handleChange(e){
         const name = e.target.name
@@ -31,7 +32,9 @@ function CompanyLogin() {
             })
         }).then((r) => {
             if (r.ok){
-                r.json().then((user) => console.log(user))
+                r.json().then((user) => {
+                    history.push('/')
+                    console.log(user)})
             }
             else {
                 r.json().then((res) => console.log(res))
@@ -57,19 +60,13 @@ function CompanyLogin() {
                 placeholder="Enter Password"
                 onChange={handleChange}
                 ></input>
-                {/* <input 
-                type="text"
-                name="password_confirmation"
-                value={userLogin.password_confirmation}
-                placeholder="Confirm Password"
-                onChange={handleChange}
-                ></input> */}
                 <input 
                 type="submit"
                 name="submit"
                 ></input>
             </form>
             <Link to='/companysignup'>Sign Up for Companies</Link>
+            <Link to='/'>Return Home</Link>
         </div>
     )
 }

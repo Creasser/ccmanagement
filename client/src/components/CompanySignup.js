@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function CompanySignup() {
     const [userSignup, setUserSignup] = useState({
@@ -8,6 +9,8 @@ function CompanySignup() {
         company_name: '',
         description: ''
     })
+
+    const history = useHistory()
 
     function handleChange(e){
         const name = e.target.name
@@ -35,7 +38,10 @@ function CompanySignup() {
             })
         }).then((r) => {
             if (r.ok){
-                r.json().then((user) => console.log(user))
+                r.json().then((user) => {
+                    history.push('/')
+                    console.log(user)
+                })
             }
             else {
                 console.log('This is not working')
