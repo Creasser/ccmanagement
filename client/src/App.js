@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import CompanyLogin from './components/CompanyLogin';
+import Login from './components/Login';
 import CompanySignup from './components/CompanySignup';
 import Home from './components/Home';
 import { Route } from 'react-router-dom';
 import UserHomePage from './components/UserHomePage';
+import SignUp from './components/SignUp';
 //import { UserProvider } from './components/UserContext';
 //import { UserContext } from './components/UserContext';
 //import { useContext, useEffect } from 'react';
@@ -32,11 +33,11 @@ useEffect(() => {
           {user ? <UserHomePage user={user} setUser={setUser}/> : <Home />}
       
         </Route>
-        <Route exact path='/companysignup'>
-          <CompanySignup />
+        <Route exact path='/signup'>
+          <SignUp />
         </Route>
         <Route exact path='/companylogin'>
-          <CompanyLogin setUser={setUser} />
+          <Login setUser={setUser} />
         </Route>
       {/* </UserProvider> */}
     </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-function CompanyLogin({ setUser }) {
+function Login({ setUser }) {
     const [userLogin, setUserLogin] = useState({
         username: '',
         password: '',
@@ -25,8 +25,26 @@ function CompanyLogin({ setUser }) {
         })
     }
 
+    function handleUserLoginType(e){
+        if(e.target.name === 'contractor'){
+            setUserLogin({
+                ...userLogin,
+                contractor: !userLogin.contractor
+            })
+        }
+        else{
+            setUserLogin({
+                ...userLogin,
+                company: !userLogin.company
+            })
+        }
+    }
+
     function handleSubmit(e){
         e.preventDefault()
+        if(userLogin.contractor){
+            return console.log(userLogin)
+        }
         //console.log(userLogin)
         fetch('/companylogin', {
             method: "POST",
@@ -68,11 +86,11 @@ function CompanyLogin({ setUser }) {
                 placeholder="Enter Password"
                 onChange={handleChange}
                 ></input>
-                <label htmlFor="Contractor">
+                <label htmlFor="Company">
                     <input
                     type="checkbox"
                     name="company"
-                    onChange={handleChange}
+                    onChange={handleUserLoginType}
                     checked={userLogin.company}
                     ></input>
                     Company
@@ -81,7 +99,7 @@ function CompanyLogin({ setUser }) {
                     <input
                     type="checkbox"
                     name="contractor"
-                    onChange={handleChange}
+                    onChange={handleUserLoginType}
                     checked={userLogin.contractor}
                     ></input>
                     Contractor
@@ -91,10 +109,9 @@ function CompanyLogin({ setUser }) {
                 name="submit"
                 ></input>
             </form>
-            <Link to='/companysignup'>Sign Up for Companies</Link>
             <Link to='/'>Return Home</Link>
         </div>
     )
 }
 
-export default CompanyLogin
+export default Login

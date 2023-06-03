@@ -7,8 +7,8 @@ function Home ({ user }){
 
     return (
         <div>
-            <Link to='/companylogin'>Company Login</Link>
-            <Link to='/contractorlogin'>Contractor Login</Link>
+            <Link to='/companylogin'>Login</Link>
+            <Link to='/signup'>Sign Up</Link>
         </div>
     )
 }

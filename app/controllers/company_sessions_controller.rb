@@ -6,7 +6,7 @@ class CompanySessionsController < ApplicationController
             session[:company_id] = company.id
             render json: company, status: :created
         else
-            render json: {message: 'Invalid Username or Password'}, status: :unprocessable_entity
+            render json: {errors: 'Invalid Username or Password'}, status: :unprocessable_entity
         end
     end
 
