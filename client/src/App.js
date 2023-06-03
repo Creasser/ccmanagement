@@ -4,6 +4,7 @@ import Home from './components/Home';
 import { Route } from 'react-router-dom';
 import UserHomePage from './components/UserHomePage';
 import SignUp from './components/SignUp';
+import NavBar from './components/NavBar';
 //import { UserProvider } from './components/UserContext';
 //import { UserContext } from './components/UserContext';
 //import { useContext, useEffect } from 'react';
@@ -28,6 +29,7 @@ useEffect(() => {
   return (
     <div className="App">
       {/* <UserProvider> */}
+      <NavBar user={user} />
         <Route exact path='/'>
           {user ? <UserHomePage user={user} setUser={setUser}/> : <Home />}
       
