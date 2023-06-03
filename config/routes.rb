@@ -2,14 +2,19 @@ Rails.application.routes.draw do
   
   #resources :contractors
   #resources :companies
-  #Company Login/Signup
+  #Initial Fetch for Previous Users
+  get "/me", to: "user#show"
+
+  #Company Login/Signup/Logout
   post "/companysignup", to: "company_user#create"
   post "/companylogin", to: "company_sessions#create"
-  #Contractor Login/Signup
+  delete "/companylogout", to: "company_sessions#destroy"
+
+  #Contractor Login/Signup/Logout
   post "/contractorsignup", to: "contractor_user#create"
   post "/contractorlogin", to: "contractor_sessions#create"
-  get "/me", to: "user#show"
-  delete "/companylogout", to: "company_sessions#destroy"
+  delete "/contractorlogout", to: "contractor_sessions#destroy"
+
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

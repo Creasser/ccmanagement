@@ -10,4 +10,9 @@ class ContractorSessionsController < ApplicationController
         end
     end
 
+    def destroy
+        session.delete :contractor_id
+        head :no_content
+    end
+
 end

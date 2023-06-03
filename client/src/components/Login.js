@@ -64,7 +64,6 @@ function Login({ setUser }) {
                 }
             })
         }
-        //console.log(userLogin)
         else if (userLogin.company){
             fetch('/companylogin', {
                 method: "POST",

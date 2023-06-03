@@ -3,11 +3,21 @@ import React from "react";
 function UserHomePage({user, setUser}){
 
     function handleLogoutClick() {
+      if(user['company_name']){
         fetch("/companylogout", { method: "DELETE" }).then((r) => {
           if (r.ok) {
             setUser(null);
           }
         });
+      }
+      else {
+        fetch("/contractorlogout", { method: "DELETE" }).then((r) => {
+          if (r.ok){
+            setUser(null)
+          }
+        });
+      }
+
       }
 
     return(
