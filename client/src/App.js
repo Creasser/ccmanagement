@@ -33,7 +33,7 @@ useEffect(() => {
       
         </Route>
         <Route exact path='/signup'>
-          <SignUp />
+          <SignUp setUser={setUser} />
         </Route>
         <Route exact path='/companylogin'>
           <Login setUser={setUser} />

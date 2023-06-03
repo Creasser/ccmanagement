@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-function ContractorSignup(){
+function ContractorSignup({ setUser }){
     const [userSignup, setUserSignup] = useState({
         username: '',
         password: '',
@@ -41,6 +41,7 @@ function ContractorSignup(){
         }).then((r) => {
             if (r.ok){
                 r.json().then((user) => {
+                    setUser(user)
                     history.push('/')
                     console.log(user)
                 })
