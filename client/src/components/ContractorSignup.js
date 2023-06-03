@@ -25,7 +25,7 @@ function ContractorSignup(){
     function handleSubmit(e){
         e.preventDefault()
         //console.log(userSignup)
-        fetch("/contactorsignup", {
+        fetch("/contractorsignup", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -94,7 +94,7 @@ function ContractorSignup(){
                 type="text"
                 name="bio"
                 value={userSignup.bio}
-                placeholder="Enter Company bio"
+                placeholder="Enter Bio"
                 onChange={handleChange}
                 ></input>
                 <input 

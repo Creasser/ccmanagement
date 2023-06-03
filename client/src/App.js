@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Login from './components/Login';
-import CompanySignup from './components/CompanySignup';
 import Home from './components/Home';
 import { Route } from 'react-router-dom';
 import UserHomePage from './components/UserHomePage';

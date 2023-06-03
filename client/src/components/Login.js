@@ -43,29 +43,53 @@ function Login({ setUser }) {
     function handleSubmit(e){
         e.preventDefault()
         if(userLogin.contractor){
-            return console.log(userLogin)
+            fetch('/contractorlogin', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: userLogin.username,
+                    password: userLogin.password
+                })
+            }).then((r) => {
+                if (r.ok){
+                    r.json().then((user) => {
+                        setUser(user)
+                        history.push('/')
+                        console.log(user)})
+                }
+                else {
+                    r.json().then((res) => console.log(res))
+                }
+            })
         }
         //console.log(userLogin)
-        fetch('/companylogin', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: userLogin.username,
-                password: userLogin.password
+        else if (userLogin.company){
+            fetch('/companylogin', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: userLogin.username,
+                    password: userLogin.password
+                })
+            }).then((r) => {
+                if (r.ok){
+                    r.json().then((user) => {
+                        setUser(user)
+                        history.push('/')
+                        console.log(user)})
+                }
+                else {
+                    r.json().then((res) => console.log(res))
+                }
             })
-        }).then((r) => {
-            if (r.ok){
-                r.json().then((user) => {
-                    setUser(user)
-                    history.push('/')
-                    console.log(user)})
-            }
-            else {
-                r.json().then((res) => console.log(res))
-            }
-        })
+        }
+        else {
+            return console.log('Select only Contrator or Company')
+        }
     }
 
     return(
