@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-function CompanyLogin() {
+function CompanyLogin({ setUser }) {
     const [userLogin, setUserLogin] = useState({
         username: '',
         password: '',
+        company: false,
+        contractor: false
     })
 
     const history = useHistory()
@@ -12,6 +14,11 @@ function CompanyLogin() {
     function handleChange(e){
         const name = e.target.name
         let value = e.target.value
+
+        if (e.target.type === 'checkbox'){
+            value = e.target.value
+        }
+
         setUserLogin({
             ...userLogin,
             [name]: value
@@ -33,6 +40,7 @@ function CompanyLogin() {
         }).then((r) => {
             if (r.ok){
                 r.json().then((user) => {
+                    setUser(user)
                     history.push('/')
                     console.log(user)})
             }
@@ -60,6 +68,24 @@ function CompanyLogin() {
                 placeholder="Enter Password"
                 onChange={handleChange}
                 ></input>
+                <label htmlFor="Contractor">
+                    <input
+                    type="checkbox"
+                    name="company"
+                    onChange={handleChange}
+                    checked={userLogin.company}
+                    ></input>
+                    Company
+                </label>
+                <label htmlFor="Contractor">
+                    <input
+                    type="checkbox"
+                    name="contractor"
+                    onChange={handleChange}
+                    checked={userLogin.contractor}
+                    ></input>
+                    Contractor
+                </label>
                 <input 
                 type="submit"
                 name="submit"

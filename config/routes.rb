@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :contractors
   #resources :companies
   post "/companysignup", to: "company_user#create"
   post "/companylogin", to: "company_sessions#create"

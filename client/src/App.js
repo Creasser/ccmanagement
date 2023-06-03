@@ -18,7 +18,9 @@ useEffect(() => {
       r.json().then((user) => setUser(user))
     }
     else{
-      r.json().then((r) => console.log(r))
+      r.json().then((r) => {
+        console.log(r)
+      })
     }
   })
 }, [])
@@ -34,7 +36,7 @@ useEffect(() => {
           <CompanySignup />
         </Route>
         <Route exact path='/companylogin'>
-          <CompanyLogin />
+          <CompanyLogin setUser={setUser} />
         </Route>
       {/* </UserProvider> */}
     </div>

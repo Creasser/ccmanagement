@@ -8,7 +8,7 @@ class UserController < ApplicationController
             contractor = Contractor.find_by(id: session[:contractor_id])
             render json: contractor, status: :created
         else
-            render json: {errors: "Inside usercontroller"}
+            render json: {errors: "Inside usercontroller"}, status: :unprocessable_entity
         end
     end
 
