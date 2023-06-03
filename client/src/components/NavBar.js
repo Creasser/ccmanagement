@@ -5,22 +5,24 @@ function NavBar({ user }){
 
     return(
         <div>
-            <Link to='/'>Home</Link>
-            <Link to='/availableprojects'>Available Projects</Link>
+            {/* <Link to='/'>Home</Link>
+            <Link to='/availableprojects'>Available Projects</Link> */}
             { user ? 
                 user.description ? 
                     <div>
+                        <Link to='/'>Home</Link>
+                        <Link to='/availableprojects'>Available Projects</Link>
                         <Link to='/currentprojects'>Current Projects</Link>
                         <Link to='/newprojects'>New Projects</Link>
                     </div>
                     :
-                    <Link to='/currentprojects'>Current Projects</Link> 
+                    <div>
+                        <Link to='/'>Home</Link>
+                        <Link to='/availableprojects'>Available Projects</Link>
+                        <Link to='/currentprojects'>Current Projects</Link> 
+                    </div>
                     :
                 null}
-            {/* { user['company_name'] ? 
-                <Link to='/newproject'>New Project</Link> 
-                : 
-                null} */}
         </div>
     )
 }
