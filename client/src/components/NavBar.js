@@ -28,7 +28,7 @@ function NavBar({ user, setUser }){
                         <Link to='/'>Home</Link>
                         <Link to='/availableprojects'>Available Projects</Link>
                         <Link to='/currentprojects'>Current Projects</Link>
-                        <Link to='/newprojects'>New Projects</Link>
+                        <Link to='/addproject'>Add Project</Link>
                         <button onClick={handleLogoutClick}>Logout</button>
                     </div>
                     :

@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import UserHomePage from './components/UserHomePage';
 import SignUp from './components/SignUp';
 import NavBar from './components/NavBar';
+import AddProject from './components/AddProject';
 //import { UserProvider } from './components/UserContext';
 //import { UserContext } from './components/UserContext';
 //import { useContext, useEffect } from 'react';
@@ -39,6 +40,9 @@ useEffect(() => {
         </Route>
         <Route exact path='/companylogin'>
           <Login setUser={setUser} />
+        </Route>
+        <Route exact path='/addproject'>
+          <AddProject />
         </Route>
       {/* </UserProvider> */}
     </div>
