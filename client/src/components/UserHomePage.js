@@ -1,31 +1,17 @@
 import React from "react";
+import CompanyUserHome from "./CompanyUserHome";
+import ContractorUserHome from "./ContractorUserHome";
 
 function UserHomePage({user, setUser}){
 
-    function handleLogoutClick() {
-      if(user['company_name']){
-        fetch("/companylogout", { method: "DELETE" }).then((r) => {
-          if (r.ok) {
-            setUser(null);
-          }
-        });
-      }
-      else {
-        fetch("/contractorlogout", { method: "DELETE" }).then((r) => {
-          if (r.ok){
-            setUser(null)
-          }
-        });
-      }
-
-      }
 
     return(
         <div>
-            <h1>{user['company_name']}</h1>
-            <h4>{user.username}</h4>
-            <button onClick={handleLogoutClick}>Logout</button>
-            
+          {user.description ? 
+            <CompanyUserHome user={user}/> 
+          : 
+            <ContractorUserHome user={user}/>  
+          }  
         </div>         
     )
 }

@@ -29,7 +29,7 @@ useEffect(() => {
   return (
     <div className="App">
       {/* <UserProvider> */}
-      <NavBar user={user} />
+      <NavBar user={user} setUser={setUser} />
         <Route exact path='/'>
           {user ? <UserHomePage user={user} setUser={setUser}/> : <Home />}
       
