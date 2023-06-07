@@ -35,6 +35,15 @@ function AddProject(){
                 deadline: newProject.deadline,
                 price: parseInt(newProject.price)
             })
+        }).then((r) => {
+            if(r.ok){
+                r.json().then((project) => {
+                    console.log(project)
+                })
+            }
+            else{
+                r.json().then((res) => console.log(res))
+            }
         })
     
     }
