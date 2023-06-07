@@ -1,5 +1,10 @@
 class ProjectsController < ApplicationController
 
+    def index
+        projects = Project.all
+        render json: projects, status: :created
+    end
+
     def create
         project = @current_user.projects.create(project_params)
         if project.valid?
