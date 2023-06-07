@@ -42,7 +42,6 @@ useEffect(() => {
 
 function handleNewProject(newProject){
   setProjects([...projects, newProject])
-  console.log(projects)
 }
 
   return (
