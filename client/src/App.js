@@ -11,8 +11,9 @@ import AddProject from './components/AddProject';
 //import { useContext, useEffect } from 'react';
 
 function App() {
-//const [user, setUser] = useContext(UserContext)
 const [user, setUser] = useState(null)
+const [projects, setProjects] = useState(null)
+
 useEffect(() => {
   fetch('/me')
   .then((r) => {
@@ -31,13 +32,18 @@ useEffect(() => {
   fetch('/projects')
   .then((r) => {
     if(r.ok){
-      r.json().then((projects) => console.log(projects))
+      r.json().then((projects) => setProjects(projects))
     }
     else{
       r.json().then((resp) => console.log(resp))
     }
   })
 }, [])
+
+function handleNewProject(newProject){
+  setProjects([...projects, newProject])
+  console.log(projects)
+}
 
   return (
     <div className="App">
@@ -54,7 +60,7 @@ useEffect(() => {
           <Login setUser={setUser} />
         </Route>
         <Route exact path='/addproject'>
-          <AddProject />
+          <AddProject handleNewProject={handleNewProject} />
         </Route>
       {/* </UserProvider> */}
     </div>

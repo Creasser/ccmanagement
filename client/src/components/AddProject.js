@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function AddProject(){
+function AddProject({ handleNewProject }){
 
     const [newProject, setNewProject] = useState({
         project_title: '',
@@ -38,7 +38,7 @@ function AddProject(){
         }).then((r) => {
             if(r.ok){
                 r.json().then((project) => {
-                    console.log(project)
+                    handleNewProject(project)
                 })
             }
             else{
