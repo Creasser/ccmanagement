@@ -6,6 +6,7 @@ import UserHomePage from './components/UserHomePage';
 import SignUp from './components/SignUp';
 import NavBar from './components/NavBar';
 import AddProject from './components/AddProject';
+import AvailableProjects from './components/AvailableProjects';
 //import { UserProvider } from './components/UserContext';
 //import { UserContext } from './components/UserContext';
 //import { useContext, useEffect } from 'react';
@@ -60,6 +61,9 @@ function handleNewProject(newProject){
         </Route>
         <Route exact path='/addproject'>
           <AddProject handleNewProject={handleNewProject} />
+        </Route>
+        <Route exact path='/availableprojects'>
+          <AvailableProjects projects={projects} user={user} />
         </Route>
       {/* </UserProvider> */}
     </div>

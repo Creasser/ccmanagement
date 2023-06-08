@@ -1,19 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function NavBar({ user, setUser }){
+
+  const history = useHistory()
 
     function handleLogoutClick() {
         if(user['company_name']){
           fetch("/companylogout", { method: "DELETE" }).then((r) => {
             if (r.ok) {
-              setUser(null);
+              history.push('/')
+              setUser(null)
             }
           });
         }
         else {
           fetch("/contractorlogout", { method: "DELETE" }).then((r) => {
             if (r.ok){
+              history.push('/')
               setUser(null)
             }
           });
