@@ -45,6 +45,11 @@ function handleNewProject(newProject){
   setProjects([...projects, newProject])
 }
 
+function handleDeleteProject(id){
+  const updatedProjects = projects.filter((project) => project.id !== id)
+  setProjects(updatedProjects)
+}
+
   return (
     <div className="App">
       {/* <UserProvider> */}
@@ -63,7 +68,11 @@ function handleNewProject(newProject){
           <AddProject handleNewProject={handleNewProject} />
         </Route>
         <Route exact path='/availableprojects'>
-          <AvailableProjects projects={projects} user={user} />
+          <AvailableProjects 
+          projects={projects} 
+          user={user} 
+          onDelete={handleDeleteProject}
+           />
         </Route>
       {/* </UserProvider> */}
     </div>

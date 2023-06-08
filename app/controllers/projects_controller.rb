@@ -14,6 +14,16 @@ class ProjectsController < ApplicationController
         end
     end
 
+    def destroy
+        if session[:company_id]
+            project = Project.find(params[:id])
+            project.destroy
+            head :no_content
+        else
+            render json: {errors: 'Not authorized'}, status: :unauthorized
+        end
+    end
+
     private
 
     def project_params

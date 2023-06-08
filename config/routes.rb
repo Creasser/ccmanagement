@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :projects, only: [:index, :create]
+  resources :projects, only: [:index, :create, :destroy]
   #resources :contractors
   #resources :companies
   #Initial Fetch for Previous Users

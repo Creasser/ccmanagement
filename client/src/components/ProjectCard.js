@@ -3,7 +3,13 @@ import React from "react";
 function ProjectCard({ project, company, user, onDelete }){
 
     function handleDelete(id){
-        
+        fetch(`/projects/${id}`, {
+            method: 'DELETE'
+        }).then((r) => {
+            if (r.ok){
+                onDelete(id)
+            }
+        })
     }
 
     return(
@@ -16,7 +22,7 @@ function ProjectCard({ project, company, user, onDelete }){
             {user.description ? 
                 company === user.id ?
                 <div>
-                    <button onClick={handleDelete(project.id)}>Delete</button>
+                    <button onClick={() => handleDelete(project.id)}>Delete</button>
                     <button>Edit</button>
                 </div>
             : 
