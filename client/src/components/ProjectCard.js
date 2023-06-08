@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import ProjectEditForm from "./ProjectEditForm";
 
-function ProjectCard({ project, company, user, onDelete }){
+function ProjectCard({ project, company, user, onDelete, onUpdate }){
+    const [editForm, setEditForm] = useState(false)
 
     function handleDelete(id){
         fetch(`/projects/${id}`, {
@@ -11,6 +13,15 @@ function ProjectCard({ project, company, user, onDelete }){
             }
         })
     }
+
+    //UPDATE
+    //need to make a form pop up, use the ternary op
+    //project data needs to prefill the form
+    //make the form controlled
+
+    // function handleUpdate(){
+
+    // }
 
     return(
         <div>
@@ -23,13 +34,14 @@ function ProjectCard({ project, company, user, onDelete }){
                 company === user.id ?
                 <div>
                     <button onClick={() => handleDelete(project.id)}>Delete</button>
-                    <button>Edit</button>
+                    <button onClick={() => setEditForm(!editForm)}>Edit</button>
                 </div>
             : 
                 null
             :
                 null
             }
+            {editForm ? <ProjectEditForm project={project} onUpdate={onUpdate} setForm={setEditForm} /> : null}
         </div>
         
     )

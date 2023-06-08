@@ -50,6 +50,11 @@ function handleDeleteProject(id){
   setProjects(updatedProjects)
 }
 
+function handleUpdatedProject(upProject){
+  const updatedProjects = projects.map((project) => project.id === upProject.id ? upProject : project)
+  setProjects(updatedProjects)
+}
+
   return (
     <div className="App">
       {/* <UserProvider> */}
@@ -72,6 +77,7 @@ function handleDeleteProject(id){
           projects={projects} 
           user={user} 
           onDelete={handleDeleteProject}
+          onUpdate={handleUpdatedProject}
            />
         </Route>
       {/* </UserProvider> */}

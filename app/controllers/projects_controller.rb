@@ -14,15 +14,22 @@ class ProjectsController < ApplicationController
         end
     end
 
-    def destroy
-        if session[:company_id]
-            project = Project.find(params[:id])
-            project.destroy
-            head :no_content
+    def update
+        project = @current_user.projects.find(params[:id])
+        project.update(project_params)
+        if project.valid?
+            render json: project, status: :created
         else
-            render json: {errors: 'Not authorized'}, status: :unauthorized
+            render json: {errors: 'Not working'}, status: :unprocessable_entity
         end
     end
+
+    def destroy
+            project = @current_user.projects.find(params[:id])
+            project.destroy
+            head :no_content
+    end
+    
 
     private
 
