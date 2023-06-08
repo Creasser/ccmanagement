@@ -79,7 +79,7 @@ function handleUpdatedProject(upProject){
           projects={projects} 
           user={user} 
           onDelete={handleDeleteProject}
-          onUpdate={handleUpdatedProject}
+          onCompUpdate={handleUpdatedProject}
            />
         </Route>
       {/* </UserProvider> */}

@@ -25,9 +25,7 @@ class ProjectsController < ApplicationController
             end
         else
             project = Project.find_by(id: params[:id])
-            project.update(
-                project.contractor_id = @current_user.id
-            )
+            project.update(project_params)
             render json: project, status: :created
         end
     end
@@ -42,7 +40,7 @@ class ProjectsController < ApplicationController
     private
 
     def project_params
-        params.permit(:project_title, :description, :start_date, :deadline, :price)
+        params.permit(:project_title, :description, :start_date, :deadline, :price, :contractor_id)
     end
 
 end

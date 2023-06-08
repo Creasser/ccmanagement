@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProjectEditForm from "./ProjectEditForm";
 
-function ProjectCard({ project, company, user, onDelete, onUpdate }){
+function ProjectCard({ project, company, user, onDelete, onCompUpdate }){
     const [editForm, setEditForm] = useState(false)
 
     function handleDelete(id){
@@ -13,6 +13,33 @@ function ProjectCard({ project, company, user, onDelete, onUpdate }){
             }
         })
     }
+
+    function handleContUpdate(id){
+        fetch(`/projects/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                contractor_id: user.id
+            })
+        }).then((r) => {
+            if(r.ok){
+                r.json().then((p) => {
+                    console.log(p)
+                })
+            }
+            else{
+                r.json().then((r) => console.log(r))
+            }
+        })
+    }
+
+    //add button to accept the project
+    //make request to server and add the contractor id to the table
+    //the project needs to be removed from the projects held in state after it is accepted
+    //may need to work with the initial fetch request or the projectsToDisplay element
+    //need to add the company info to the company user object held in state
 
 
     return(
@@ -31,9 +58,9 @@ function ProjectCard({ project, company, user, onDelete, onUpdate }){
             : 
                 null
             :
-                null
+                <button onClick={() => handleContUpdate(project.id)}>Accept Project</button>
             }
-            {editForm ? <ProjectEditForm project={project} onUpdate={onUpdate} setForm={setEditForm} /> : null}
+            {editForm ? <ProjectEditForm project={project} onUpdate={onCompUpdate} setForm={setEditForm} /> : null}
         </div>
         
     )
