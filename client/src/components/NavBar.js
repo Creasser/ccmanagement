@@ -45,7 +45,6 @@ function NavBar({ user, setUser }){
                 :
                 <div>
                     <Link to='/'>Home</Link>
-                    <Link to='/availableprojects'>Available Projects</Link>
                 </div>
             }
         </div>

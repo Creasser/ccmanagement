@@ -1,7 +1,7 @@
 import React from "react";
 import ProjectCard from "./ProjectCard";
 
-function AvailableProjects({ projects, user }){
+function AvailableProjects({ projects, user, onDelete }){
 
     if (!projects){
         return <h1>Loading...</h1>
@@ -9,7 +9,7 @@ function AvailableProjects({ projects, user }){
 
 
     const projectsElements = projects.map((project) => {
-        return <ProjectCard key={project.id} project={project} company={project.company_id} user={user} />
+        return <ProjectCard key={project.id} project={project} company={project.company_id} user={user} onDelete={onDelete} />
     })
 
     //need to pass projects down to this compoent, then pass to project card component.

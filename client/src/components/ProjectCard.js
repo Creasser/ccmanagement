@@ -1,7 +1,10 @@
 import React from "react";
 
-function ProjectCard({ project, company, user }){
+function ProjectCard({ project, company, user, onDelete }){
 
+    function handleDelete(id){
+        
+    }
 
     return(
         <div>
@@ -10,10 +13,10 @@ function ProjectCard({ project, company, user }){
             <h2>{project.start_date}</h2>
             <h2>{project.deadline}</h2>
             <h2>{project.price}</h2>
-            {user.description && user ? 
+            {user.description ? 
                 company === user.id ?
                 <div>
-                    <button>Delete</button>
+                    <button onClick={handleDelete(project.id)}>Delete</button>
                     <button>Edit</button>
                 </div>
             : 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function AddProject({ handleNewProject }){
 
@@ -9,6 +10,8 @@ function AddProject({ handleNewProject }){
         deadline: '',
         price: 0,
     })
+
+    const history = useHistory()
 
     function handleChange(e){
         const name = e.target.name
@@ -39,6 +42,7 @@ function AddProject({ handleNewProject }){
             if(r.ok){
                 r.json().then((project) => {
                     handleNewProject(project)
+                    history.push('/availableprojects')
                 })
             }
             else{
