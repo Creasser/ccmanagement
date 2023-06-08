@@ -15,12 +15,20 @@ class ProjectsController < ApplicationController
     end
 
     def update
-        project = @current_user.projects.find(params[:id])
-        project.update(project_params)
-        if project.valid?
-            render json: project, status: :created
+        if session[:company_id]
+            project = @current_user.projects.find(params[:id])
+            project.update(project_params)
+            if project.valid?
+                render json: project, status: :created
+            else
+                render json: {errors: 'Not working'}, status: :unprocessable_entity
+            end
         else
-            render json: {errors: 'Not working'}, status: :unprocessable_entity
+            project = Project.find_by(id: params[:id])
+            project.update(
+                project.contractor_id = @current_user.id
+            )
+            render json: project, status: :created
         end
     end
 

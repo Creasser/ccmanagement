@@ -14,14 +14,6 @@ function ProjectCard({ project, company, user, onDelete, onUpdate }){
         })
     }
 
-    //UPDATE
-    //need to make a form pop up, use the ternary op
-    //project data needs to prefill the form
-    //make the form controlled
-
-    // function handleUpdate(){
-
-    // }
 
     return(
         <div>
