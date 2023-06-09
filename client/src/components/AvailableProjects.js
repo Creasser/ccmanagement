@@ -7,8 +7,11 @@ function AvailableProjects({ projects, user, onDelete, onCompUpdate, onAccepted 
         return <h1>Loading...</h1>
     }
 
+    const projectsToDisplay = projects.filter((project) => {
+        return !project.contractor_id
+    })
 
-    const projectsElements = projects.map((project) => {
+    const projectsElements = projectsToDisplay.map((project) => {
         return <ProjectCard 
         key={project.id} 
         project={project} 
@@ -18,6 +21,8 @@ function AvailableProjects({ projects, user, onDelete, onCompUpdate, onAccepted 
         onCompUpdate={onCompUpdate}
         onAccepted={onAccepted} />
     })
+
+    
 
     //need to pass projects down to this compoent, then pass to project card component.
     //Need to map over the projects and create a card for each of the projects
