@@ -23,9 +23,13 @@ function NavBar({ user, setUser }){
           });
         }}
 
+        function log(){
+          console.log(user)
+        }
+
     return(
         <div>
-
+          <button onClick={log}>Log</button>
             { user ? 
                 user.description ? 
                     <div>

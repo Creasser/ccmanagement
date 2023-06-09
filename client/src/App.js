@@ -57,6 +57,13 @@ function handleUpdatedProject(upProject){
   setProjects(updatedProjects)
 }
 
+function handleAcceptedProject(acceptedProject){
+  const updatedProjects = projects.map((project) => project.id === acceptedProject.id ? acceptedProject : project)
+  setProjects(updatedProjects)
+  user.projects.push(acceptedProject)
+  setUser(user)
+}
+
   return (
     <div className="App">
       {/* <UserProvider> */}
@@ -80,6 +87,7 @@ function handleUpdatedProject(upProject){
           user={user} 
           onDelete={handleDeleteProject}
           onCompUpdate={handleUpdatedProject}
+          onAccepted={handleAcceptedProject}
            />
         </Route>
       {/* </UserProvider> */}

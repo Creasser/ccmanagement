@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProjectEditForm from "./ProjectEditForm";
 
-function ProjectCard({ project, company, user, onDelete, onCompUpdate }){
+function ProjectCard({ project, company, user, onDelete, onCompUpdate, onAccepted }){
     const [editForm, setEditForm] = useState(false)
 
     function handleDelete(id){
@@ -27,6 +27,7 @@ function ProjectCard({ project, company, user, onDelete, onCompUpdate }){
             if(r.ok){
                 r.json().then((p) => {
                     console.log(p)
+                    onAccepted(p)
                 })
             }
             else{
