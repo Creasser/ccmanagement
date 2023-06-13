@@ -2,9 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-function Home ({ user }){
-   // const user = useContext(UserContext)
-
+function Home (){
+   
     return (
         <div>
             <Link to='/companylogin'>Login</Link>

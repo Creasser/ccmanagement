@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "./Context";
 import CurrentProjects from "./CurrentProjects";
 
-function ContractorUserHome({ user }){
+function ContractorUserHome(){
+    const {user} = useContext(UserContext);
 
     return(
         <div>

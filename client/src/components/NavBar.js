@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "./Context";
 import { Link, useHistory } from "react-router-dom";
 
-function NavBar({ user, setUser }){
+function NavBar(){
+  const {user, setUser} = useContext(UserContext);
 
   const history = useHistory()
 

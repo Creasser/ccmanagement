@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "./Context";
 import { useHistory } from "react-router-dom";
 
-function ContractorSignup({ setUser }){
+function ContractorSignup(){
+    const {setUser} = useContext(UserContext);
     const [userSignup, setUserSignup] = useState({
         username: '',
         password: '',

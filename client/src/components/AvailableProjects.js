@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "./Context";
 import ProjectCard from "./ProjectCard";
 
-function AvailableProjects({ projects, user, onDelete, onCompUpdate, onAccepted }){
-
+function AvailableProjects({ projects, onDelete, onCompUpdate, onAccepted }){
+    const {user} = useContext(UserContext);
     if (!projects){
         return <h1>Loading...</h1>
     }

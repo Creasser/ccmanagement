@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "./Context";
 import CompanySignup from "./CompanySignup";
 import ContractorSignup from "./ContractorSignup";
 import { Link } from "react-router-dom";
 
-function SignUp({ setUser }){
+function SignUp(){
+    const {setUser} = useContext(UserContext);
     const [userType, setUserType] = useState(false)
 
     return (

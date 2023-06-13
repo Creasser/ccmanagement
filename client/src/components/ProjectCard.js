@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "./Context";
 import ProjectEditForm from "./ProjectEditForm";
 
-function ProjectCard({ project, company, user, onDelete, onCompUpdate, onAccepted }){
+function ProjectCard({ project, company, onDelete, onCompUpdate, onAccepted }){
+    const {user} = useContext(UserContext);
     const [editForm, setEditForm] = useState(false)
 
     function handleDelete(id){

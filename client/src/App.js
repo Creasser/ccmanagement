@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Login from './components/Login';
 import Home from './components/Home';
 import { Route } from 'react-router-dom';
@@ -10,9 +10,11 @@ import AvailableProjects from './components/AvailableProjects';
 //import { UserProvider } from './components/UserContext';
 //import { UserContext } from './components/UserContext';
 //import { useContext, useEffect } from 'react';
+import { UserContext } from './components/Context';
 
 function App() {
-const [user, setUser] = useState(null)
+const { user, setUser} = useContext(UserContext)
+//const [user, setUser] = useState(null)
 const [projects, setProjects] = useState(null)
 
 useEffect(() => {
@@ -29,7 +31,7 @@ useEffect(() => {
       })
     }
   })
-}, [])
+}, [setUser])
 
 useEffect(() => {
   fetch('/projects')
@@ -66,17 +68,15 @@ function handleAcceptedProject(acceptedProject){
 
   return (
     <div className="App">
-      {/* <UserProvider> */}
-      <NavBar user={user} setUser={setUser} />
+      <NavBar  />
         <Route exact path='/'>
-          {user ? <UserHomePage user={user} setUser={setUser}/> : <Home />}
-      
+          {user ? <UserHomePage /> : <Home />}
         </Route>
         <Route exact path='/signup'>
-          <SignUp setUser={setUser} />
+          <SignUp />
         </Route>
         <Route exact path='/companylogin'>
-          <Login setUser={setUser} />
+          <Login />
         </Route>
         <Route exact path='/addproject'>
           <AddProject handleNewProject={handleNewProject} />
@@ -84,13 +84,11 @@ function handleAcceptedProject(acceptedProject){
         <Route exact path='/availableprojects'>
           <AvailableProjects 
           projects={projects} 
-          user={user} 
           onDelete={handleDeleteProject}
           onCompUpdate={handleUpdatedProject}
           onAccepted={handleAcceptedProject}
            />
         </Route>
-      {/* </UserProvider> */}
     </div>
   );
 }
