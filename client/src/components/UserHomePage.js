@@ -9,9 +9,9 @@ function UserHomePage(){
     return(
         <div>
           {user.description ? 
-            <CompanyUserHome user={user}/> 
+            <CompanyUserHome /> 
           : 
-            <ContractorUserHome user={user}/>  
+            <ContractorUserHome />  
           }  
         </div>         
     )

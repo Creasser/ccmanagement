@@ -7,14 +7,10 @@ import SignUp from './components/SignUp';
 import NavBar from './components/NavBar';
 import AddProject from './components/AddProject';
 import AvailableProjects from './components/AvailableProjects';
-//import { UserProvider } from './components/UserContext';
-//import { UserContext } from './components/UserContext';
-//import { useContext, useEffect } from 'react';
 import { UserContext } from './components/Context';
 
 function App() {
 const { user, setUser} = useContext(UserContext)
-//const [user, setUser] = useState(null)
 const [projects, setProjects] = useState(null)
 
 useEffect(() => {

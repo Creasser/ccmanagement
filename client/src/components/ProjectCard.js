@@ -38,13 +38,6 @@ function ProjectCard({ project, company, onDelete, onCompUpdate, onAccepted }){
         })
     }
 
-    //add button to accept the project
-    //make request to server and add the contractor id to the table
-    //the project needs to be removed from the projects held in state after it is accepted
-    //may need to work with the initial fetch request or the projectsToDisplay element
-    //need to add the company info to the company user object held in state
-
-
     return(
         <div>
             <h1>{project.project_title}</h1>

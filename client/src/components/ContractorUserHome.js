@@ -9,7 +9,7 @@ function ContractorUserHome(){
         <div>
             <h1>{`Welcome, ${user['first_name']} ${user['last_name']} `}</h1>
             <p>{user.bio}</p>
-            <CurrentProjects user={user} />
+            <CurrentProjects />
         </div>
     )
 }
