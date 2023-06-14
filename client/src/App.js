@@ -33,7 +33,9 @@ useEffect(() => {
   fetch('/projects')
   .then((r) => {
     if(r.ok){
-      r.json().then((projects) => setProjects(projects))
+      r.json().then((projects) =>{
+        console.log(projects)
+        setProjects(projects)})
     }
     else{
       r.json().then((resp) => console.log(resp))
