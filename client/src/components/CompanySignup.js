@@ -1,9 +1,12 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "./Context";
 import { useHistory } from "react-router-dom";
+import Error from "./Error";
+import { v4 as uuidv4 } from 'uuid'
 
 function CompanySignup() {
     const {setUser} = useContext(UserContext);
+    const [errors, setErrors] = useState([])
     const [userSignup, setUserSignup] = useState({
         username: '',
         password: '',
@@ -47,7 +50,9 @@ function CompanySignup() {
                 })
             }
             else {
-                console.log('This is not working')
+                r.json().then((err) => {
+                    setErrors(err.errors)
+                    console.log(err)})
             }
         })
     }
@@ -96,6 +101,14 @@ function CompanySignup() {
                 name="submit"
                 ></input>
             </form>
+            <div>
+                {errors ? 
+                    errors.map((err) => {
+                        return <Error key={uuidv4()} err={err} />
+                    })
+                : 
+                null}
+            </div>
         </div>
     )
 }

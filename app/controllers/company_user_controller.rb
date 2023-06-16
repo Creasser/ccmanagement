@@ -6,7 +6,7 @@ class CompanyUserController < ApplicationController
             session[:company_id] = company.id
             render json: company, status: :created
         else
-            render json: {errors: 'Invalid Information'}, status: :unprocessable_entity
+            render json: {errors: company.errors.full_messages}, status: :unprocessable_entity
         end
     end
 
