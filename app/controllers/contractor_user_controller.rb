@@ -6,7 +6,7 @@ class ContractorUserController < ApplicationController
             session[:contractor_id]
             render json: contractor, status: :created
         else
-            render json: {errors: 'Invalid Information - Contractor'}
+            render json: {errors: contractor.errors.full_messages}, status: :unprocessable_entity
         end
     end
 

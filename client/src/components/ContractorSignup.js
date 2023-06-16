@@ -1,9 +1,12 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "./Context";
 import { useHistory } from "react-router-dom";
+import Error from "./Error";
+import { v4 as uuidv4 } from 'uuid'
 
 function ContractorSignup(){
     const {setUser} = useContext(UserContext);
+    const [errors, setErrors] = useState([])
     const [userSignup, setUserSignup] = useState({
         username: '',
         password: '',
@@ -26,7 +29,6 @@ function ContractorSignup(){
 
     function handleSubmit(e){
         e.preventDefault()
-        //console.log(userSignup)
         fetch("/contractorsignup", {
             method: "POST",
             headers: {
@@ -49,7 +51,9 @@ function ContractorSignup(){
                 })
             }
             else {
-                console.log('This is not working - Contractor Signup')
+                r.json().then((err) => {
+                    setErrors(err.errors)
+                    console.log(err)})
             }
         })
     }
@@ -105,6 +109,14 @@ function ContractorSignup(){
                 name="submit"
                 ></input>
             </form>
+            <div>
+                {errors ? 
+                    errors.map((err) => {
+                        return <Error key={uuidv4()} err={err} />
+                    })
+                : 
+                null}
+            </div>
         </div>
     )
 }
