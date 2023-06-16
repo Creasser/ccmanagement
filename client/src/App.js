@@ -60,14 +60,9 @@ function handleUpdatedProject(upProject){
 function handleAcceptedProject(acceptedProject){
   const updatedProjects = projects.map((project) => project.id === acceptedProject.id ? acceptedProject : project)
   setProjects(updatedProjects)
-  // if (user.companies.includes(acceptedProject.company)){
-  //     user.companies.push(acceptedProject.company)
-  //     user.projects.push(acceptedProject)
-  //   setUser(user)
-  //   }else{
-      user.projects.push(acceptedProject)
-      setUser(user)
-    //}
+  user.companies.push(acceptedProject.company)
+  user.projects.push(acceptedProject)
+  setUser(user)
   }
 
 

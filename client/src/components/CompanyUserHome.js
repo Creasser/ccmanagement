@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "./Context";
 import CurrentProjects from "./CurrentProjects";
+import AssociatedContractors from "./AssociatedContractors";
 
 function CompanyUserHome(){
     const {user} = useContext(UserContext);
@@ -10,6 +11,7 @@ function CompanyUserHome(){
             <h1>{`Welcome, ${user['company_name']}`}</h1>
             <p>{user.description}</p>
             <CurrentProjects user={user} />
+            <AssociatedContractors />
         </div>
     )
 }
