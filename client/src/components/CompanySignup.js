@@ -28,7 +28,6 @@ function CompanySignup() {
 
     function handleSubmit(e){
         e.preventDefault()
-        //console.log(userSignup)
         fetch("/companysignup", {
             method: "POST",
             headers: {

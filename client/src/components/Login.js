@@ -1,9 +1,13 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "./Context";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import Error from "./Error";
+import { v4 as uuidv4 } from 'uuid'
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function Login() {
     const {setUser} = useContext(UserContext);
+    const [errors, setErrors] = useState([])
     const [userLogin, setUserLogin] = useState({
         username: '',
         password: '',
@@ -62,7 +66,9 @@ function Login() {
                         console.log(user)})
                 }
                 else {
-                    r.json().then((res) => console.log(res))
+                    r.json().then((err) => {
+                        setErrors(err.errors)
+                    })
                 }
             })
         }
@@ -134,7 +140,15 @@ function Login() {
                 name="submit"
                 ></input>
             </form>
-            <Link to='/'>Return Home</Link>
+            <div>
+                {errors ? 
+                    errors.map((err) => {
+                        return <Error key={uuidv4()} err={err} />
+                    })
+                : 
+                null}
+            </div>
+            <Link to='/signup'>Signup</Link>
         </div>
     )
 }

@@ -6,7 +6,7 @@ class ContractorSessionsController < ApplicationController
             session[:contractor_id] = contractor.id
             render json: contractor, status: :created
         else
-            render json: {errors: 'Invaid Username or Password'}, status: :unprocessable_entity
+            render json: {errors: ['Invalid username or password']}, status: :unprocessable_entity
         end
     end
 
