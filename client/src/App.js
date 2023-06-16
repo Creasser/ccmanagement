@@ -18,7 +18,6 @@ useEffect(() => {
   .then((r) => {
     if (r.ok){
       r.json().then((user) => {
-        //console.log(user)
         setUser(user)})
     }
     else{
@@ -65,8 +64,6 @@ function handleAcceptedProject(acceptedProject){
   setUser(user)
   }
 
-
-  //need to add company_name to the user.contractors array if the user has NOT had a project with them
 
   return (
     <div className="App">

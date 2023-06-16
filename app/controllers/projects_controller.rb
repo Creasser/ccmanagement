@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
         if project.valid?
             render json: project, status: :created
         else
-            render json: {errors: 'Project is invalid'}, status: :unprocessable_entity
+            render json: {errors: project.errors.full_messages}, status: :unprocessable_entity
         end
     end
 
@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
             if project.valid?
                 render json: project, status: :created
             else
-                render json: {errors: 'Not working'}, status: :unprocessable_entity
+                render json: {errors: project.errors.full_messages}, status: :unprocessable_entity
             end
         else
             project = Project.find_by(id: params[:id])

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Error from "./Error";
+import { v4 as uuidv4 } from 'uuid'
 
 function AddProject({ handleNewProject }){
-
+    const [errors, setErrors] = useState([])
     const [newProject, setNewProject] = useState({
         project_title: '',
         description: '',
@@ -46,7 +48,7 @@ function AddProject({ handleNewProject }){
                 })
             }
             else{
-                r.json().then((res) => console.log(res))
+                r.json().then((err) => setErrors(err.errors))
             }
         })
     
@@ -95,6 +97,14 @@ function AddProject({ handleNewProject }){
                     name="submit"
                 ></input>
             </form>
+            <div>
+                {errors ? 
+                    errors.map((err) => {
+                        return <Error key={uuidv4()} err={err} />
+                    })
+                : 
+                null}
+            </div>
         </div>
     )
 }

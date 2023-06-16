@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import Error from "./Error";
+import { v4 as uuidv4 } from 'uuid'
 
 function ProjectEditForm({ project, onUpdate, setForm }){
+    const [errors, setErrors] = useState([])
     const [updatedProject, setUpdatedProject] = useState({
         project_title: project.project_title,
         description: project.description,
@@ -42,7 +45,7 @@ function ProjectEditForm({ project, onUpdate, setForm }){
                 })
             }
             else{
-                r.json().then((r) => console.log(r))
+                r.json().then((err) => setErrors(err.errors))
             }
         })
     }
@@ -90,6 +93,14 @@ function ProjectEditForm({ project, onUpdate, setForm }){
                     name="submit"
                 ></input>
             </form>
+            <div>
+                {errors ? 
+                    errors.map((err) => {
+                        return <Error key={uuidv4()} err={err} />
+                    })
+                : 
+                null}
+            </div>
         </div>
     )
 }

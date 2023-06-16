@@ -52,8 +52,7 @@ function ContractorSignup(){
             }
             else {
                 r.json().then((err) => {
-                    setErrors(err.errors)
-                    console.log(err)})
+                    setErrors(err.errors)})
             }
         })
     }
