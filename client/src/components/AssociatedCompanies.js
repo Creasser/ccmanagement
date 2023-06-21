@@ -17,7 +17,10 @@ function AssociatedCompanies(){
 
     return(
         <div>
-            {companiesToDisplay}
+            <h1>Associated Companies</h1>
+            <div className="associatedUserContainer">
+                {companiesToDisplay}
+            </div>
         </div>
     )
 }

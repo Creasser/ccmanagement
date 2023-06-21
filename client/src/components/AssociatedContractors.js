@@ -12,7 +12,10 @@ function AssociatedContractors(){
 
     return(
         <div>
-            {contractorsToDisplay}
+            <h1>Associated Contractors</h1>
+            <div className="associatedUserContainer">
+                {contractorsToDisplay}
+            </div>
         </div>
     )
 }

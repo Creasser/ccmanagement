@@ -48,3 +48,18 @@ code {
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.associatedUser {
+  display: flex;
+  margin-bottom: 20px;
+  border: 2px solid;
+  padding: 0px 20px;
+  margin-right: 30px;
+  background: lightslategrey;
+}
+
+.associatedUserContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
