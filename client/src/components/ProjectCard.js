@@ -44,7 +44,7 @@ function ProjectCard({ project, company, onDelete, onCompUpdate, onAccepted }){
             <p>{project.description}</p>
             <h2>{project.start_date}</h2>
             <h2>{project.deadline}</h2>
-            <h2>{project.price}</h2>
+            <h2>{`$${project.price}`}</h2>
             {user.description ? 
                 company === user.id ?
                 <div>

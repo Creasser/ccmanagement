@@ -10,7 +10,9 @@ function CompanyUserHome(){
         <div>
             <h1>{`Welcome, ${user['company_name']}`}</h1>
             <p>{user.description}</p>
-            <CurrentProjects user={user} />
+            <div>
+                <CurrentProjects user={user} />
+            </div> 
             <AssociatedContractors />
         </div>
     )
