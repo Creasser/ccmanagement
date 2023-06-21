@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import Login from './components/Login';
-import Home from './components/Home';
 import { Route } from 'react-router-dom';
 import UserHomePage from './components/UserHomePage';
 import SignUp from './components/SignUp';
@@ -69,7 +68,7 @@ function handleAcceptedProject(acceptedProject){
     <div className="App">
       <NavBar  />
         <Route exact path='/'>
-          {user ? <UserHomePage /> : <Home />}
+          {user ? <UserHomePage /> : <Login />}
         </Route>
         <Route exact path='/signup'>
           <SignUp />

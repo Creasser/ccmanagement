@@ -3,7 +3,6 @@ import { UserContext } from "./Context";
 import { useHistory } from "react-router-dom";
 import Error from "./Error";
 import { v4 as uuidv4 } from 'uuid'
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function Login() {
     const {setUser} = useContext(UserContext);
@@ -148,7 +147,6 @@ function Login() {
                 : 
                 null}
             </div>
-            <Link to='/signup'>Signup</Link>
         </div>
     )
 }

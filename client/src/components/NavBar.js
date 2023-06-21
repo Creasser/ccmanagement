@@ -25,30 +25,27 @@ function NavBar(){
           });
         }}
 
-        function log(){
-          console.log(user)
-        }
-
     return(
         <div>
-          <button onClick={log}>Log</button>
             { user ? 
                 user.description ? 
-                    <div>
-                        <Link to='/'>Home</Link>
-                        <Link to='/availableprojects'>Available Projects</Link>
-                        <Link to='/addproject'>Add Project</Link>
+                    <div className="navbar">
+                        <Link className="navLinks" to='/'>Home</Link>
+                        <Link className="navLinks" to='/availableprojects'>Available Projects</Link>
+                        <Link className="navLinks" to='/addproject'>Add Project</Link>
                         <button onClick={handleLogoutClick}>Logout</button>
                     </div>
                     :
-                    <div>
-                        <Link to='/'>Home</Link>
-                        <Link to='/availableprojects'>Available Projects</Link>
+                    <div className="navbar">
+                        <Link className="navLinks" to='/'>Home</Link>
+                        <Link className="navLinks" to='/availableprojects'>Available Projects</Link>
                         <button onClick={handleLogoutClick}>Logout</button>
                     </div>
                 :
-                <div>
-                    <Link to='/'>Home</Link>
+                <div className="navbar">
+                    <Link className="navLinks" to='/'>Home</Link>
+                    <Link className="navLinks" to='/companylogin'>Login</Link>
+                    <Link className="navLinks" to='/signup'>Sign Up</Link>
                 </div>
             }
         </div>

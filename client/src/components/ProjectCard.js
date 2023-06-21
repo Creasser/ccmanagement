@@ -39,7 +39,7 @@ function ProjectCard({ project, company, onDelete, onCompUpdate, onAccepted }){
     }
 
     return(
-        <div>
+        <div className="projectCard">
             <h1>{project.project_title}</h1>
             <p>{project.description}</p>
             <h2>{project.start_date}</h2>

@@ -32,7 +32,7 @@ function AvailableProjects({ projects, onDelete, onCompUpdate, onAccepted }){
     return(
         <div>
             <h1>Available Projects</h1>
-            <div>{projectsElements}</div>
+            <div className="projectContainer">{projectsElements}</div>
         </div>
     )
 }
