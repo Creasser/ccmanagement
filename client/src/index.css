@@ -63,3 +63,33 @@ code {
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px; 
+  margin-top: 20px;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
