@@ -93,3 +93,16 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #45a049;
 }
+
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
